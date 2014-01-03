@@ -29,6 +29,7 @@ public class Login extends HttpServlet {
       out.println("  Hello, " + login + "!");
       out.println("</body>");
       out.println("</html>");
+      out.close();
     } else {
       request.getRequestDispatcher("/error.html").forward(request, response);
     }
