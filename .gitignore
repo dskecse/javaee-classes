@@ -5,6 +5,9 @@
 *.war
 *.ear
 
+# Eclipse-specific metadata
 .settings/
 .classpath
 .project
+
+build/
