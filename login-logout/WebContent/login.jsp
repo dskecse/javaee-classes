@@ -11,6 +11,10 @@
   </style>
 </head>
 <body>
+  <c:if test="${not empty sessionScope['loginUser']}">
+    <c:redirect url="index.jsp" />
+  </c:if>
+
   <form action="loginAuthenticate.jsp" method="post">
     <p>
       <label for="user_login">Login:</label>
