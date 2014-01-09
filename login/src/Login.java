@@ -11,12 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 public class Login extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
-  protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+
     response.setContentType("text/html");
+    PrintWriter out = response.getWriter();
 
     String login    = request.getParameter("login");
     String password = request.getParameter("password");
-    PrintWriter out = response.getWriter();
 
     if (!login.equals("") && !password.equals("")) {
       out.println("<!DOCTYPE html>");
