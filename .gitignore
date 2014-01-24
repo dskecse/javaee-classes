@@ -11,3 +11,6 @@
 .project
 
 build/
+
+# Maven-generated build dir
+target/
