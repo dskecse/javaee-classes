@@ -1,0 +1,16 @@
+<!DOCTYPE validators PUBLIC
+          "-//Apache Struts//XWork Validator 1.0.2//EN"
+          "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+
+<validators>
+  <field name="comment.author">
+    <field-validator type="requiredstring">
+      <message key="errors.required.author"/>
+    </field-validator>
+  </field>
+  <field name="comment.content">
+    <field-validator type="requiredstring">
+      <message key="errors.required.content"/>
+    </field-validator>
+  </field>
+</validators>

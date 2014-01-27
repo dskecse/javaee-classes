@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+  <constant name="struts.devMode" value="true"/>
+
+  <!-- Configuration for the default package. -->
+  <package name="default" extends="struts-default">
+    <action name="index" class="by.bigsoft.courses.javaee.action.CommentAction" method="list">
+      <result name="success">/WEB-INF/content/comments.jsp</result>
+      <!-- we don't need the full stack here -->
+      <interceptor-ref name="basicStack"/>
+    </action>
+
+    <action name="*Comment" class="by.bigsoft.courses.javaee.action.CommentAction" method="{1}">
+      <result name="success" type="redirectAction">index</result>
+      <result name="input">/WEB-INF/content/comments.jsp</result>
+    </action>
+  </package>
+</struts>
