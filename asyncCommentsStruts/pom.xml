@@ -34,13 +34,6 @@
     </dependency>
 
     <dependency>
-      <groupId>org.apache.struts</groupId>
-      <artifactId>struts2-junit-plugin</artifactId>
-      <version>${struts2.version}</version>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>
       <version>1.2.17</version>
