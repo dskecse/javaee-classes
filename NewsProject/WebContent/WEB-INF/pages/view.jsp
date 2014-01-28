@@ -50,6 +50,6 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<input type="submit" value="<spring:message code="comment.add"/>" />
+	<input type="submit" value="<spring:message code="comment.add"/>" class="btn btn-primary" />
 </body>
 </html>

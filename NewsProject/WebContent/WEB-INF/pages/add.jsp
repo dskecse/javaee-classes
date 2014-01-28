@@ -34,7 +34,7 @@
 				<td><form:textarea id="content" path="content" /><form:errors path="content" cssClass="error" /></td>
 			</tr>
 		</table>
-		<input type="submit" value="<spring:message code="news.add"/>" />
+		<input type="submit" value="<spring:message code="news.add"/>" class="btn btn-primary" />
 	</form:form>
 </body>
 </html>

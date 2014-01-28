@@ -15,7 +15,7 @@
 </head>
 <body>
 	<spring:url value="/news/add/page" var="addUrl" />
-	<a href="${addUrl}">
+	<a href="${addUrl}" class="btn">
 		<spring:message code="news.add" />
 	</a>
 
