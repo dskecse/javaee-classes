@@ -23,37 +23,28 @@
 		<a href="?lang=en"><spring:message code="en" /></a> | <a href="?lang=ru"><spring:message code="ru" /></a>
 	</span>
 
-	<div class="container-fluid">
-		<table class="table table-responsive table-bordered table-hover">
-			<thead>
-				<tr>
-					<td><spring:message code="news.title" /></td>
-					<td><spring:message code="news.brief" /></td>
-					<td><spring:message code="news.content" /></td>
-					<td><spring:message code="news.created" /></td>
-					<td><spring:message code="news.updated" /></td>
-					<td><spring:message code="news.comments" /></td>
-					<td><spring:message code="news.actions" /></td>
-				</tr>
-			</thead>
-			<tbody>
+	<c:choose>
+		<c:when test="${empty newsList}">
+			<div class="alert"><spring:message code="news.no" /></div>
+		</c:when>
+		<c:otherwise>
+			<div class="container-fluid">
 				<c:forEach items="${newsList}" var="newsItem">
-					<tr>
-						<td>${newsItem.title}</td>
-						<td>${newsItem.brief}</td>
-						<td>${newsItem.content}</td>
-						<td><fmt:formatDate value="${newsItem.created}" pattern="MM/dd/YYYY"/></td>
-						<td>${newsItem.lastModified}</td>
-						<td>${fn:length(comments)}</td>
-						<td>
-							<a href="news/view/${newsItem.newsId}">
-								<spring:message code="action.view" />
-							</a>
-						</td>
-					</tr>
+				  <h2>${newsItem.title}</h2>
+					<p>
+						${newsItem.brief}
+						<a href="news/view/${newsItem.newsId}">
+							<spring:message code="action.view" />
+						</a>
+					</p>
+					<p class="muted">
+						<spring:message code="news.created" />:
+						<fmt:formatDate value="${newsItem.created}" pattern="dd.MM.YYYY HH:mm" />
+				  </p>
+				  <p class="muted"><spring:message code="news.comments" />: ${fn:length(comments)}</p>
 				</c:forEach>
-			</tbody>
-		</table>
-	</div>
+			</div>
+		</c:otherwise>
+	</c:choose>
 </body>
 </html>
