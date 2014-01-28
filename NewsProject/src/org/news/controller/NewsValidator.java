@@ -16,14 +16,14 @@ public class NewsValidator implements Validator {
 
 	@Override
 	public void validate(Object target, Errors errors) {
-
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "title",
-				"required.news.title", "Field title is required.");
-
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "brief",
-				"required.news.brief", "Field brief is required.");
-
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "content",
-				"required.news.content", "Field content is required.");
+		ValidationUtils.rejectIfEmptyOrWhitespace(
+			errors, "title", "required.news.title"
+		);
+		ValidationUtils.rejectIfEmptyOrWhitespace(
+			errors, "brief", "required.news.brief"
+		);
+		ValidationUtils.rejectIfEmptyOrWhitespace(
+			errors, "content", "required.news.content"
+		);
 	}
 }

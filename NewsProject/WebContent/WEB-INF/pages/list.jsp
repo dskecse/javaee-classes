@@ -6,47 +6,55 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.css"/>" />
-<title>News list</title>
+	<title>News list</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.css"/>" />
+	<style>
+		#locale { float: right; margin: 0 10px; }
+		thead td { font-weight: bold; }
+	</style>
 </head>
-
-<spring:url value="/news/add/page" var="addUrl" />
-<a href="${addUrl}">add news</a>
-
-<span style="float: right; margin: 0px 10px;"> <a href="?lang=en"><spring:message
-			code="en" /> </a> | <a href="?lang=ru"> <spring:message code="ru" /></a>
-</span>
-
 <body>
+	<spring:url value="/news/add/page" var="addUrl" />
+	<a href="${addUrl}">
+		<spring:message code="news.add" />
+	</a>
 
-<div class="container-fluid">
-	<table class="table table-responsive table-bordered table-hover">
-		<thead>
-			<tr>
-				<td>Title</td>
-				<td>Brief</td>
-				<td>Content</td>
-				<td>Created</td>
-				<td>Updated</td>
-				<td>Comments count</td>
-				<td>Actions</td>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${newsList}" var="newsItem">
+	<span id="locale">
+		<a href="?lang=en"><spring:message code="en" /></a> | <a href="?lang=ru"><spring:message code="ru" /></a>
+	</span>
+
+	<div class="container-fluid">
+		<table class="table table-responsive table-bordered table-hover">
+			<thead>
 				<tr>
-					<td>${newsItem.title}</td>
-					<td>${newsItem.brief}</td>
-					<td>${newsItem.content}</td>
-					<td><fmt:formatDate value="${newsItem.created}" pattern="MM/dd/YYYY"/></td>
-					<td>${newsItem.lastModified}</td>
-					<td>${fn:length(comments)}</td>
-					<td><a href="news/view/${newsItem.newsId}">view</a></td>
+					<td><spring:message code="news.title" /></td>
+					<td><spring:message code="news.brief" /></td>
+					<td><spring:message code="news.content" /></td>
+					<td><spring:message code="news.created" /></td>
+					<td><spring:message code="news.updated" /></td>
+					<td><spring:message code="news.comments" /></td>
+					<td><spring:message code="news.actions" /></td>
 				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-</div>
+			</thead>
+			<tbody>
+				<c:forEach items="${newsList}" var="newsItem">
+					<tr>
+						<td>${newsItem.title}</td>
+						<td>${newsItem.brief}</td>
+						<td>${newsItem.content}</td>
+						<td><fmt:formatDate value="${newsItem.created}" pattern="MM/dd/YYYY"/></td>
+						<td>${newsItem.lastModified}</td>
+						<td>${fn:length(comments)}</td>
+						<td>
+							<a href="news/view/${newsItem.newsId}">
+								<spring:message code="action.view" />
+							</a>
+						</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
 </body>
 </html>

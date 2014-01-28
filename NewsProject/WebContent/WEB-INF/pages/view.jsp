@@ -4,27 +4,39 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Add News</title>
+	<title>Add News</title>
+	<meta charset="utf-8">
 </head>
 <body>
 	<table>
 		<tr>
-			<td><label for="title"><spring:message code="news.title" />
-			</label></td>
+			<td>
+				<label for="title">
+					<spring:message code="news.title" />
+				</label>
+			</td>
 			<td>${news.title}</td>
 		</tr>
 		<tr>
-			<td><label for="brief"><spring:message code="news.brief" /></label></td>
+			<td>
+				<label for="brief">
+					<spring:message code="news.brief" />
+				</label>
+			</td>
 			<td>${news.brief}</td>
 		</tr>
 		<tr>
-			<td><label for="content"><spring:message
-						code="news.content" /></label></td>
-			<td>${news.brief}</td>
+			<td>
+				<label for="content">
+					<spring:message code="news.content" />
+				</label>
+			</td>
+			<td>${news.content}</td>
 		</tr>
 	</table>
-	Comments
+
+	<p><spring:message code="comment.comments" />:</p>
+
 	<table>
 		<c:forEach items="${news.comments}" var="comment">
 			<tr>
@@ -34,6 +46,6 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<input type="submit" value="<spring:message code="news.add"/>" />
+	<input type="submit" value="<spring:message code="comment.add"/>" />
 </body>
 </html>

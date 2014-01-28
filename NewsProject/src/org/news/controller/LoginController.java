@@ -14,15 +14,15 @@ public class LoginController {
 	public String loginPage(){
 		return "login";
 	}
-	
+
 	@RequestMapping(method=RequestMethod.POST, value="/login")
 	public String login(@ModelAttribute String username, @ModelAttribute String password){
 		if(username.isEmpty()){
-			return "redirect:/login"; 
+			return "redirect:/login";
 		}
 		return "redirect:/list";
 	}
-	
+
 	@RequestMapping(value="/logout")
 	public String logout(HttpSession session){
 		session.invalidate();
