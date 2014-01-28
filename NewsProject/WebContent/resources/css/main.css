@@ -1,0 +1,12 @@
+#locale {
+  float: right;
+  margin: 0 10px;
+}
+
+thead td {
+  font-weight: bold;
+}
+
+.error {
+  color: #ff0000;
+}
