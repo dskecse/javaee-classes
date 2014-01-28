@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+	<global-method-security pre-post-annotations="enabled" />
+
+	<http pattern="/resources/**" security="none" />
+
+	<http auto-config="true" use-expressions="true">
+		<form-login login-page="/login" authentication-failure-url="/login" default-target-url="/list"/>
+		<logout invalidate-session="true" logout-success-url="/" logout-url="/logout" />
+		<remember-me key="pta" token-validity-seconds="1209600" />
+		<intercept-url pattern="/**" access="permitAll" />
+<!-- 		<intercept-url pattern="/news/add" access="hasAnyRole('ROLE_AUTHOR', 'ROLE_ADMIN')" /> -->
+	</http>
+
+	<authentication-manager>
+		<authentication-provider user-service-ref="userDetailsService" />
+	</authentication-manager>
+</beans:beans>
