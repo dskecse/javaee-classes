@@ -6,50 +6,70 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Add News</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.css"/>" />
-	<link rel="stylesheet" href="<c:url value="/resources/css/main.css"/>" />
+	<title><spring:message code="page.view.title" /></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="<c:url value='/resources/css/bootstrap.min.css'/>" />
+	<link rel="stylesheet" href="<c:url value='/resources/css/main.css'/>" />
+	<link rel="stylesheet" href="<c:url value='/resources/css/bootstrap-responsive.min.css'/>" />
 </head>
 <body>
-	<table>
-		<tr>
-			<td>
-				<label for="title">
-					<spring:message code="news.title" />
-				</label>
-			</td>
-			<td>${news.title}</td>
-		</tr>
-		<tr>
-			<td>
-				<label for="brief">
-					<spring:message code="news.brief" />
-				</label>
-			</td>
-			<td>${news.brief}</td>
-		</tr>
-		<tr>
-			<td>
-				<label for="content">
-					<spring:message code="news.content" />
-				</label>
-			</td>
-			<td>${news.content}</td>
-		</tr>
-	</table>
+	<div class="container-narrow">
+    <div class="masthead">
+      <ul class="nav nav-pills pull-right">
+        <li>
+          <a href="<c:url value='/news' />">
+            <spring:message code="label.home" />
+          </a>
+        </li>
+        <li>
+        	<a href="<c:url value='/j_spring_security_logout' />">
+						<spring:message code="label.logout" />
+					</a>
+				</li>
+      </ul>
+      <div id="locale">
+    		<a href="?lang=en"><spring:message code="en" /></a> | <a href="?lang=ru"><spring:message code="ru" /></a>
+      </div>
+    </div>
 
-	<p><spring:message code="comment.comments" />:</p>
+    <hr>
 
-	<table>
-		<c:forEach items="${news.comments}" var="comment">
-			<tr>
-				<td>author.userName</td>
-				<td>author.message</td>
-				<td>created</td>
-			</tr>
-		</c:forEach>
-	</table>
-	<input type="submit" value="<spring:message code="comment.add"/>" class="btn btn-primary" />
+    <div class="row-fluid marketing">
+      <div class="span12">
+
+      	<dl class="dl-horizontal">
+      	  <dt><spring:message code="news.title" /></dt>
+      	  <dd>${news.title}</dd>
+
+      	  <dt><spring:message code="news.brief" /></dt>
+      	  <dd>${news.brief}</dd>
+
+					<dt><spring:message code="news.content" /></dt>
+					<dd>${news.content}</dd>
+      	</dl>
+
+      	<p><spring:message code="comment.comments" />:</p>
+
+				<table>
+					<c:forEach items="${news.comments}" var="comment">
+						<tr>
+							<td>author.userName</td>
+							<td>author.message</td>
+							<td>created</td>
+						</tr>
+					</c:forEach>
+				</table>
+				<input type="submit" value="<spring:message code="comment.add"/>" class="btn btn-primary" />
+
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="footer">
+      <p>© Company 2013</p>
+    </div>
+  </div>
 </body>
 </html>

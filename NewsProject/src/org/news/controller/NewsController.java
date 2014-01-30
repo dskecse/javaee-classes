@@ -19,53 +19,46 @@ public class NewsController {
 
 	@Autowired
 	private NewsService service;
-	
+
 	@Autowired
 	private NewsValidator validator;
 
-	@RequestMapping("/list")
+	@RequestMapping("/news")
 	public String getNewsList(Model model) {
 		try {
 			model.addAttribute("newsList", service.getNewsList());
 		} catch (NewsServiceException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return "list";
 	}
 
-	@RequestMapping(value = "news/add", method=RequestMethod.POST)
+	@RequestMapping(value = "/news/add", method = RequestMethod.POST)
 	public String addNews(@Valid @ModelAttribute NewsModel newsModel, BindingResult result) {
-		//validator.validate(newsModel, result);
-
 		if (result.hasErrors()) {
 			return "add";
 		}
-		
 		try {
 			service.addNews(newsModel);
 		} catch (NewsServiceException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return "add";
 		}
-
-		return "forward:/list";
+		return "forward:/news";
 	}
-	
-	@RequestMapping(value="news/view/{id}")	
-	public String viewNews(@PathVariable int id, Model model){
+
+	@RequestMapping(value = "/news/{id}")
+	public String viewNews(@PathVariable int id, Model model) {
 		try {
 			NewsModel news = service.getNews(id);
 			model.addAttribute("news", news);
 		} catch (NewsServiceException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return "view";
 	}
-	
-	@RequestMapping(value = "news/add/page", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/news/add", method = RequestMethod.GET)
 	public String addPage() {
 		return "add";
 	}
@@ -73,7 +66,7 @@ public class NewsController {
 	public void setService(NewsService service) {
 		this.service = service;
 	}
-	
+
 	@ModelAttribute("newsModel")
 	public NewsModel populateUser() {
 		return new NewsModel();
