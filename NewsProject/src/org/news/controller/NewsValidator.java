@@ -10,8 +10,8 @@ import org.springframework.validation.Validator;
 public class NewsValidator implements Validator {
 
 	@Override
-	public boolean supports(Class<?> clazz) {
-		return NewsModel.class.isAssignableFrom(clazz);
+	public boolean supports(Class<?> klass) {
+		return NewsModel.class.isAssignableFrom(klass);
 	}
 
 	@Override

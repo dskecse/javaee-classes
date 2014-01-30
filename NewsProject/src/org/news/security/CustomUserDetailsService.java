@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 @Component("userDetailsService")
 public class CustomUserDetailsService implements UserDetailsService {
@@ -18,7 +19,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String login)
 			throws UsernameNotFoundException {
 
-		if (login == null || login.isEmpty()) {
+		if (!StringUtils.hasText(login)) {
 			throw new UsernameNotFoundException("User not found");
 		}
 
@@ -37,7 +38,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 		for (String role : roles) {
 			resultRoles.add(new SimpleGrantedAuthority(role));
 		}
-
 		return resultRoles;
+
 	}
 }

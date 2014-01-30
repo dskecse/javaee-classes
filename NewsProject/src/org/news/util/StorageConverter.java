@@ -16,7 +16,6 @@ public class StorageConverter {
 		try {
 			BeanUtils.copyProperties(ret, news);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return ret;
@@ -37,7 +36,6 @@ public class StorageConverter {
 			ret.setComments(comments);
 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return ret;
@@ -48,7 +46,6 @@ public class StorageConverter {
 		try {
 			BeanUtils.copyProperties(ret, comment);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return ret;
@@ -59,7 +56,6 @@ public class StorageConverter {
 		try {
 			BeanUtils.copyProperties(ret, comment);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return ret;
